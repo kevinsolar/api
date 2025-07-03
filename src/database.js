@@ -23,6 +23,9 @@ export class Database {
 			// se nao existir, entao eu crio uma nova tabela passando o dado
 			this.database[table] = [data]
 		}
+
+    // passa os dados de database para o DATABASE
+    this.persist()
 	}
 
 	select(table) {
