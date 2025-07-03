@@ -1,6 +1,1 @@
-{
-	"products": [
-		{ "name": "Teclado", "price": 12.33 },
-		{ "name": "Mouse", "price": 10 }
-	]
-}
+{"products":[{"name":"Mouse","price":10},{"name":"Teclado","price":90}]}

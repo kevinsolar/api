@@ -5,13 +5,18 @@ const DATABASE_PATH = new URL("db.json", import.meta.url)
 export class Database {
 	database = {}
 
-  constructor() {
-    this.persist()
-  }
+	constructor() {
+		fs.readFile(DATABASE_PATH, "utf8")
+			.then((data) => {
+				this.database = JSON.parse(data)
+			})
+			.catch(() => this.persist())
+		this.persist()
+	}
 
-  persist() {
-    fs.writeFile(DATABASE_PATH, JSON.stringify(this.database))
-  }
+	persist() {
+		fs.writeFile(DATABASE_PATH, JSON.stringify(this.database))
+	}
 
 	insert(table, data) {
 		/*
@@ -24,12 +29,11 @@ export class Database {
 			this.database[table] = [data]
 		}
 
-    // passa os dados de database para o DATABASE
-    this.persist()
+		// passa os dados de database para o DATABASE
+		this.persist()
 	}
 
 	select(table) {
 		return this.database[table]
 	}
 }
- 
